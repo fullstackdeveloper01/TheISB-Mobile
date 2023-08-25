@@ -1,0 +1,31 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class City extends Model
+{
+    use HasFactory;
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var string[]
+     */
+    protected $fillable = [
+        'id',
+        'country_id',
+        'name',
+        'status'
+    ];
+
+    /**
+     * Country list
+     */
+    public function country()
+    {
+        return $this->belongsTo(Country::class, 'country_id');
+    }
+}
